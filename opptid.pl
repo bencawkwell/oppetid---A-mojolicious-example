@@ -59,15 +59,19 @@ sub calculator {
 any '/' => sub {
     my $self = shift;
     my $percentage  = $self->param('percentage') || '99.9';
+    $percentage = '99.9' unless $percentage =~ /\d+((\.|,)\d*)?/;
     my $year = $self->param('year');
     my $month = $self->param('month');
     my $day = $self->param('day');
-    if($year =~ /\d{4}/ && $month =~ /0[1-9]|1[0-2]/ && $day =~ /0[1-9]|[1-2][0-9]|3[0-1]/) {
+    if($year && $month && $day &&
+        $year =~ /\d{4}/ &&
+        $month =~ /0[1-9]|1[0-2]/ &&
+        $day =~ /0[1-9]|[1-2][0-9]|3[0-1]/) {
         $self->redirect_to("/$year/$month/$day/$percentage");
     }
     else
     {
-        $self->redirect_to("/$year/$month/$day/$percentage");
+        $self->redirect_to("/$percentage");
     }
 } => 'index';
 

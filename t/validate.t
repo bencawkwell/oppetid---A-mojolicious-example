@@ -3,7 +3,7 @@ use Test::Mojo;
 
 use FindBin;
 $ENV{MOJO_HOME} = "$FindBin::Bin/../";
-require "$ENV{MOJO_HOME}/downtime.pl";
+require "$ENV{MOJO_HOME}/opptid.pl";
 
 my @tests = (
     { '99.9' => 1 },

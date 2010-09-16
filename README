@@ -1,6 +1,6 @@
 While demonstrating the benefits of Mojolicious to a friend, he asked me
-to rewrite http://www.oppetid.info/ that demonstrated the benfits of this
-framework. This is the rewrite using Mojolicious::Lite.
+to rewrite http://www.oppetid.info/ to prove that there were benfits of
+this framework. This is the rewrite using Mojolicious::Lite.
 
 Features
 --------
@@ -37,3 +37,4 @@ Then check out the code using git:
 Then run the application:
 
     ./opptid.pl
+

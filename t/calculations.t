@@ -51,6 +51,7 @@ my @tests = (
 );
 
 my $t = Test::Mojo->new;
+$t->app->log->level('error');
 foreach my $test (@tests) {
     foreach (keys %$test) {
         my $path = $_;
@@ -59,7 +60,7 @@ foreach my $test (@tests) {
           ->status_is(200);
         foreach my $key (keys %$values) {
             my ($d,$h,$m,$s) = @{$values->{$key}};
-            my $regex = '/<dd>(\s*)?(.*)?'.$d.'(.*)?'.$h.'(.*)?'.$m.'(.*)?'.$s.'(.*)?(\s*)?</dd>/';
+            my $regex = '/<dd>(\s*)?(.*)?'.($d || '').'(.*)?'.$h.'(.*)?'.$m.'(.*)?'.$s.'(.*)?(\s*)?</dd>/';
             $t->content_like($regex);
         }
     }

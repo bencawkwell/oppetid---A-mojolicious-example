@@ -17,6 +17,7 @@ my @tests = (
 );
 
 my $t = Test::Mojo->new;
+$t->app->log->level('error');
 foreach my $test (@tests) {
     foreach (keys %$test) {
         my $path = $_;

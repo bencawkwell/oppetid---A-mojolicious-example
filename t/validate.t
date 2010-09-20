@@ -22,11 +22,12 @@ my @tests = (
 );
 
 my $t = Test::Mojo->new;
+$t->app->log->level('error');
 foreach my $test (@tests) {
     foreach (keys %$test) {
         my $path = '/'.$_;
         my $status = $test->{$_} ? 200 : 302;
         $t->get_ok($path)
-          ->status_is($status);
+          ->status_is($status)
     }
 }

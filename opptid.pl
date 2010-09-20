@@ -122,6 +122,17 @@ app->renderer->add_helper(
         return $dtf->format_duration($duration)
     }
 );
+# Add Host helper (cant seem to find another way to do this?)
+app->renderer->add_helper(
+    Host => sub {
+        my $self = shift;
+        my $is_secure = $self->tx->req->is_secure;
+        my $protocol = $is_secure ? 'https' : 'http';
+        my $host = $self->tx->req->headers->host;
+        my $language = $self->{stash}->{i18n}->languages;
+        return "$protocol://$host/$language";
+    }
+);
 
 # Start the Mojolicious command system
 app->start;
@@ -194,6 +205,9 @@ __DATA__
         <%= format_duration($downtime->{year}, '%e days, %H hours, %M minutes, %S seconds') %>
     </dd>
 </dl>
+<p>
+    <%=l 'Link to this page: ' %><a href="<%= Host %><%= url_for 'calculator' %>"><%= Host %><%= url_for 'calculator' %></a>
+</p>
 <p>
     <%= l 'The above calculations are based on a period starting from [dt,_1].',$start_date %>
     <%= l 'You can customise the start date by setting the year, month and day below.' %>

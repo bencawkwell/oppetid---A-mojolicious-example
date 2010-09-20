@@ -20,6 +20,7 @@ our %Lexicon = (
     '%Y years, %m months, %e days, %H hours, %M minutes, %S seconds' => '% Y år,% m måneder,% e dager,% H timer,% M minutter,% S sekunder',
     '%H hours, %M minutes, %S seconds' => '%H timer, %M minutter, %S sekunder',
     '%e days, %H hours, %M minutes, %S seconds' => '%e dager, %H timer, %M minutter, %S sekunder',
+    'Link to this page: ' => 'Fast peker til denne siden: ',
     'The above calculations are based on a period starting from [dt,_1].' => 'Ovennevnte beregninger er basert på en periode fra [dt,_1,.].',
     'You can customise the start date by setting the year, month and day below.' => 'Du kan tilpasse startdato ved å angi år, måned og dag nedenfor.',
     'Year' => 'År',
